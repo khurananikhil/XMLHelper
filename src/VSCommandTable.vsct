@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h" />
+  <Extern href="vsshlids.h" />
+  <Include href="KnownImageIds.vsct" />
+
+  <Commands package="guidPackage">
+    <Menus>
+      <Menu guid="guidPackageCmdSet" id="MyMenu" priority="0xFF81" type="Menu">
+        <Parent guid="guidStdEditor" id="IDG_VS_EDITOR_LANGUAGE_INFO" />
+        <Strings>
+          <ButtonText>MSHelper</ButtonText>
+        </Strings>
+      </Menu>
+    </Menus>
+
+    <Groups>
+      <Group guid="guidPackageCmdSet" id="CommentsGroup" priority="0x0100">
+        <Parent guid="guidPackageCmdSet" id="MyMenu" />
+      </Group>
+
+      <Group guid="guidPackageCmdSet" id="XmlConversionGroup" priority="0x0700">
+        <Parent guid="guidPackageCmdSet" id="MyMenu" />
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidPackageCmdSet" id="RemoveAllComments" priority="0x0100" type="Button">
+        <Parent guid="guidPackageCmdSet" id="CommentsGroup" />
+        <Icon guid="ImageCatalogGuid" id="Uncomment" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <LocCanonicalName>Remove All Comments</LocCanonicalName>
+          <ButtonText>Remove All</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidPackageCmdSet" id="XmlConversion" priority="0x0700" type="Button">
+        <Parent guid="guidPackageCmdSet" id="XmlConversionGroup" />
+        <Icon guid="ImageCatalogGuid" id="TaskList" />
+        <CommandFlag>IconIsMoniker</CommandFlag>
+        <CommandFlag>DynamicVisibility</CommandFlag>
+        <Strings>
+          <LocCanonicalName>Decode XML encodes</LocCanonicalName>
+          <ButtonText>Decode XML</ButtonText>
+        </Strings>
+      </Button>
+
+      <Button guid="guidXHelperPackageCmdSet" id="cmdidEBCXSDebuggerCommand" priority="0x0100" type="Button">
+        <Parent guid="guidSHLMainMenu" id="IDG_VS_WNDO_OTRWNDWS1" />
+        <Icon guid="guidImages" id="bmpPic1" />
+        <Strings>
+          <ButtonText>EBCXSDebugger</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\EBCXSDebuggerCommand.png" usedList="bmpPic1, bmpPic2, bmpPicSearch, bmpPicX, bmpPicArrows, bmpPicStrikethrough" />
+    </Bitmaps>
+  </Commands>
+
+  <VisibilityConstraints>
+    <VisibilityItem guid="guidPackageCmdSet" id="RemoveAllComments" context="GUID_TextEditorFactory" />
+    <VisibilityItem guid="guidPackageCmdSet" id="RemoveAllComments" context="guidXmlUiCmds" />
+
+    <VisibilityItem guid="guidPackageCmdSet" id="XmlConversion" context="GUID_TextEditorFactory" />
+    <VisibilityItem guid="guidPackageCmdSet" id="XmlConversion" context="guidXmlUiCmds" />
+  </VisibilityConstraints>
+
+  <KeyBindings>
+    <KeyBinding guid="guidPackageCmdSet" id="RemoveAllComments" mod1="Control" key1="K" mod2="Control" key2="Q" editor="guidVSStd97" />
+    <KeyBinding guid="guidPackageCmdSet" id="XmlConversion" mod1="Control Shift" key1="X" mod2="Control Shift" editor="guidVSStd97" />
+  </KeyBindings>
+
+  <Symbols>
+    <!-- This is the package guid. -->
+    <GuidSymbol name="guidPackage" value="{34f42dd5-2285-4902-bdfa-6d721e867b57}" />
+
+    <!-- XML editor guid -->
+    <GuidSymbol name="guidXmlUiCmds" value="{fb87333b-16c8-400e-bc8f-f6b890410582}" />
+
+    <!-- This is the guid used to group the menu commands together -->
+    <GuidSymbol name="guidPackageCmdSet" value="{d7952971-879b-431d-b743-70ad7e99e846}">
+      <IDSymbol name="MyMenu" value="0x1000" />
+
+      <IDSymbol name="CommentsGroup" value="0x1020" />
+      <IDSymbol name="XmlConversionGroup" value="0x1060" />
+
+      <IDSymbol name="RemoveAllComments" value="0x0100" />
+      <IDSymbol name="XmlConversion" value="0x0700" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{665ffd9b-e27f-4a1d-b5d9-e35bd8c587ed}" name="guidXHelperPackageCmdSet">
+      <IDSymbol value="256" name="cmdidEBCXSDebuggerCommand" />
+    </GuidSymbol>
+  
+    <GuidSymbol value="{358b0570-7cd6-429a-a34e-363ed4c225ce}" name="guidImages">
+      <IDSymbol name="bmpPic1" value="1" />
+      <IDSymbol name="bmpPic2" value="2" />
+      <IDSymbol name="bmpPicSearch" value="3" />
+      <IDSymbol name="bmpPicX" value="4" />
+      <IDSymbol name="bmpPicArrows" value="5" />
+      <IDSymbol name="bmpPicStrikethrough" value="6" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
